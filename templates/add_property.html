@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Add Property</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/style.css') }}">
+
+</head>
+
+<body>
+
+    <h1>Add New Property</h1>
+
+    {% with messages = get_flashed_messages(with_categories=true) %}
+
+        {% for category, message in messages %}
+
+            <p>{{ message }}</p>
+
+        {% endfor %}
+
+    {% endwith %}
+
+
+    <form
+        method="POST"
+        enctype="multipart/form-data"
+    >
+
+        <div>
+
+            <label>Property Title</label>
+
+            <input
+                type="text"
+                name="title"
+                placeholder="Enter property title"
+                required
+            >
+
+        </div>
+
+
+        <div>
+
+            <label>Description</label>
+
+            <textarea
+                name="description"
+                placeholder="Describe the property"
+                required
+            ></textarea>
+
+        </div>
+
+
+        <div>
+
+            <label>Price</label>
+
+            <input
+                type="number"
+                name="price"
+                placeholder="Enter price"
+                required
+            >
+
+        </div>
+
+
+        <div>
+
+            <label>Property Type</label>
+
+            <select name="property_type" required>
+
+                <option value="">
+                    Select property type
+                </option>
+
+                <option value="Apartment">
+                    Apartment
+                </option>
+
+                <option value="House">
+                    House
+                </option>
+
+                <option value="Villa">
+                    Villa
+                </option>
+
+                <option value="Plot">
+                    Plot
+                </option>
+
+                <option value="Commercial">
+                    Commercial
+                </option>
+
+            </select>
+
+        </div>
+
+
+        <div>
+
+            <label>Listing Type</label>
+
+            <select name="listing_type" required>
+
+                <option value="">
+                    Select listing type
+                </option>
+
+                <option value="sale">
+                    For Sale
+                </option>
+
+                <option value="rent">
+                    For Rent
+                </option>
+
+            </select>
+
+        </div>
+
+
+        <div>
+
+            <label>Location</label>
+
+            <input
+                type="text"
+                name="location"
+                placeholder="Enter location"
+                required
+            >
+
+        </div>
+
+
+        <div>
+
+            <label>Bedrooms</label>
+
+            <input
+                type="number"
+                name="bedrooms"
+                min="0"
+                required
+            >
+
+        </div>
+
+
+        <div>
+
+            <label>Bathrooms</label>
+
+            <input
+                type="number"
+                name="bathrooms"
+                min="0"
+                required
+            >
+
+        </div>
+
+
+        <div>
+
+            <label>Area (sq. ft.)</label>
+
+            <input
+                type="number"
+                name="area"
+                min="0"
+                required
+            >
+
+        </div>
+
+
+        <div>
+
+            <label>Property Images</label>
+
+            <input
+                type="file"
+                name="images"
+                accept=".jpg,.jpeg,.png,.webp"
+                multiple
+            >
+
+        </div>
+
+
+        <button type="submit">
+            Add Property
+        </button>
+
+    </form>
+
+
+    <br>
+
+    <a href="{{ url_for('auth.dashboard') }}">
+        Back to Dashboard
+    </a>
+
+</body>
+
+</html>
